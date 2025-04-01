@@ -12,7 +12,11 @@ jobs:
         y: [4, 5, 6]
     steps:
       - id: step
-        run: echo "val=(${{ matrix.x }},${{ matrix.y}})" >> $GITHUB_OUTPUT
+        run: |
+          x=${{ matrix.x }}
+          y=${{ matrix.y }}
+          id=$(( x*y ))
+          echo "$id=($x,$y)" >> $GITHUB_OUTPUT
 
   finish:
     runs-on: ubuntu-latest
