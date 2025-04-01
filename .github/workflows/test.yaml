@@ -5,18 +5,25 @@ jobs:
   matrixed:
     runs-on: ubuntu-latest
     outputs:
-      val: ${{ steps.step.outputs.val }}
+      ${{ matrix.id }}: ${{ steps.step.outputs.out }}
     strategy:
       matrix:
-        x: [1, 2, 3]
-        y: [4, 5, 6]
+        include:
+          - id: 4
+            x: 1
+            y: 4
+          - id: 18
+            x: 3
+            y: 6
+          - id: 8
+            x: 2
+            y: 4
     steps:
       - id: step
         run: |
           x=${{ matrix.x }}
           y=${{ matrix.y }}
-          id=$(( x*y ))
-          echo "$id=($x,$y)" >> $GITHUB_OUTPUT
+          echo "out=($x,$y)" >> $GITHUB_OUTPUT
 
   finish:
     runs-on: ubuntu-latest
