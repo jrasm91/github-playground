@@ -1,0 +1,13 @@
+name: Test permissions
+on:
+  push:
+permissions: {}
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello > world.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hello-world
+          path: world.txt
