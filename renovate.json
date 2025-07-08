@@ -38,8 +38,7 @@
       "datasourceTemplate": "github-tags",
       "packageNameTemplate": "immich-app/devtools",
       "extractVersionTemplate": "^{{{depName}}}-{{{depType}}}-(?<version>.+)$",
-      "versioningTemplate": "semver-coerced",
-      "autoReplaceStringTemplate": "uses: {{{fullPath}}}@{{{newDigest}}} # {{{depName}}}-{{{depType}}}-{{{newValue}}}"
+      "versioningTemplate": "semver-coerced"
     }
   ]
 }
