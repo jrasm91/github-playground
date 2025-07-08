@@ -21,6 +21,7 @@
       "matchDepTypes": [
         "action"
       ],
+      "versionCompatibility": "^(?<compatibility>.*)-(?<version>.*)$",
       "groupName": "github-actions",
       "ignoreUnstable": false,
       "minimumReleaseAge": "0"
