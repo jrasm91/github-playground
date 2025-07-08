@@ -8,12 +8,18 @@
   ],
   "packageRules": [
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "github-actions"
     },
     {
-      "matchPackageNames": ["immich-app/devtools"],
-      "matchDepTypes": ["action"],
+      "matchPackageNames": [
+        "immich-app/devtools"
+      ],
+      "matchDepTypes": [
+        "action"
+      ],
       "groupName": "github-actions",
       "ignoreUnstable": false,
       "minimumReleaseAge": "0"
@@ -22,7 +28,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      "managerFilePatterns": [
+        "/^\\.github/workflows/[^/]+\\.ya?ml$/"
+      ],
       "matchStrings": [
         "uses:\\s+(?<fullPath>immich-app/devtools/(?:.*/)?(?<depType>\\w+)s/(?<depName>[^/@]+?)(?:\\.ya?ml)?)@(?<currentDigest>[a-f0-9]+)\\s+#\\s+(?<currentValue>[^\\s]+)"
       ],
