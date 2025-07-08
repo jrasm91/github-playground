@@ -1,6 +1,36 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":configMigration",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions"
+    },
+    {
+      "matchPackageNames": ["immich-app/devtools"],
+      "matchDepTypes": ["action"],
+      "groupName": "github-actions",
+      "ignoreUnstable": false,
+      "minimumReleaseAge": "0"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      "matchStrings": [
+        "uses:\\s+(?<fullPath>immich-app/devtools/(?:.*/)?(?<depType>\\w+)s/(?<depName>[^/@]+?)(?:\\.ya?ml)?)@(?<currentDigest>[a-f0-9]+)\\s+#\\s+(?<currentValue>[^\\s]+)"
+      ],
+      "datasourceTemplate": "github-tags",
+      "packageNameTemplate": "immich-app/devtools",
+      "extractVersionTemplate": "^{{{depName}}}-{{{depType}}}-(?<version>.+)$",
+      "versioningTemplate": "semver-coerced",
+      "autoReplaceStringTemplate": "uses: {{{fullPath}}}@{{{newDigest}}} # {{{depName}}}-{{{depType}}}-{{{newValue}}}"
+    }
   ]
 }
