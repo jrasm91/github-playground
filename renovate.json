@@ -39,7 +39,7 @@
       "packageNameTemplate": "immich-app/devtools",
       "extractVersionTemplate": "^{{{depName}}}-{{{depType}}}-(?<version>.+)$",
       "versioningTemplate": "semver-coerced",
-      "autoReplaceStringTemplate": "uses: {{{packageName}}}/{{{depType}}}s/{{{depName}}}@{{{newDigest}}} # {{{depName}}}-{{{depType}}}-{{{newValue}}}"
+      "autoReplaceStringTemplate": "uses: {{{packageName}}}/{{{depType}}}s/{{{depName}}}@{{{newDigest}}} # {{{newValue}}}"
     }
   ]
 }
