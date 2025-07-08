@@ -1,0 +1,12 @@
+on:
+  workflow_dispatch:
+
+name: foo
+
+jobs:
+  success-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: immich-app/devtools/actions/success-check@success-check-action-0.0.3
+        with:
+          needs: ""
